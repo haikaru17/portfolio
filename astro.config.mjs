@@ -1,11 +1,9 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite'; // Import plugin baru
 
-import tailwindcss from '@tailwindcss/vite';
-
-// https://astro.build/config
 export default defineConfig({
+  // Hapus bagian integrations: [tailwind()] jika masih ada
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()], // Pasang Tailwind sebagai plugin Vite
+  },
 });
