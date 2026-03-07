@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import FloatingNav from '../components/FloatingNav.astro';
+import { ClientRouter } from 'astro:transitions';
+
+const { title = "Haikal Luthfianino" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" id="html-root">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <ClientRouter />
+
+        <script is:inline>
+            // Kita bungkus logikanya ke dalam sebuah fungsi
+            function applyTheme() {
+                const theme = (() => {
+                    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                        return localStorage.getItem('theme');
+                    }
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        return 'dark';
+                    }
+                    return 'light'; 
+                })();
+                
+                if (theme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
+                }
+                window.localStorage.setItem('theme', theme);
+            }
+
+            // 1. Jalankan saat pertama kali website dibuka (Hard Load)
+            applyTheme();
+
+            // 2. Jalankan ULANG setiap kali Astro mengganti halaman (Soft Load)
+            document.addEventListener('astro:after-swap', applyTheme);
+        </script>
+    </head>
+
+    <body class="bg-neutral-50 dark:bg-black text-neutral-800 dark:text-neutral-300 min-h-screen relative selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black pb-32 transition-colors duration-500">
+        <div class="bg-grid absolute inset-0 z-0 pointer-events-none"></div>
+        
+        <div class="relative z-10 pt-20 animate-fade-in">
+            <slot />
+        </div>
+        
+        <FloatingNav />
+    </body>
+</html>
+
+<style is:global>
+    body { font-family: 'Inter', sans-serif; }
+    .font-code { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Variabel untuk Grid agar berubah sesuai tema */
+    :root {
+        --grid-color: rgba(0, 0, 0, 0.06);
+    }
+    .dark {
+        --grid-color: rgba(255, 255, 255, 0.04);
+    }
+    .bg-grid {
+        background-size: 40px 40px;
+        background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                          linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    }
+</style>

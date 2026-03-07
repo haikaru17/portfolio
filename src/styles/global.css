@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Baris ini memaksa Tailwind v4 tunduk pada tombol sakelar kita, bukan OS */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Animasi masuk (Fade In Up) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animasi Terminal Cursor Berkedip */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
