@@ -6,12 +6,49 @@ import Layout from '../layouts/Layout.astro';
     <main class="max-w-5xl mx-auto px-6 w-full pt-10 md:pt-20">
         <div class="max-w-2xl mx-auto md:mx-0 space-y-4 flex flex-col items-start text-left">
             
-            <div class="inline-flex items-center gap-1.5 px-4 py-2 border border-glass-border-light dark:border-glass-border-dark backdrop-blur-md bg-glass-light/70 dark:bg-glass-dark/70 text-neutral-600 dark:text-neutral-300 text-sm font-code rounded-full shadow-sm antialiased">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse"></span>
-                <span>whoami</span>
-                <span class="text-emerald-500 font-bold ml-1">></span>
-                <span class="text-emerald-500">root</span>@haikal: ~
-                <span class="animate-blink font-bold text-black dark:text-white ml-0.5">_</span>
+            <div class="relative inline-block z-50">
+                <div id="terminal-badge" title="Klik untuk menjalankan neofetch" class="inline-flex items-center gap-1.5 px-4 py-2 border border-glass-border-light dark:border-glass-border-dark backdrop-blur-md bg-glass-light/70 dark:bg-glass-dark/70 text-neutral-600 dark:text-neutral-300 text-sm font-code rounded-full shadow-sm antialiased cursor-pointer hover:bg-glass-light dark:hover:bg-glass-dark hover:scale-105 active:scale-95 transition-all duration-300 group select-none">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/30 animate-pulse group-hover:bg-yellow-400 transition-colors"></span>
+                    <span>whoami</span>
+                    <span class="text-emerald-500 font-bold ml-1">></span>
+                    <span class="text-emerald-500">root</span>@haikal: ~
+                    <span class="animate-blink font-bold text-black dark:text-white ml-0.5">_</span>
+                </div>
+
+                <div id="neofetch-panel" class="absolute top-full left-0 mt-4 w-[85vw] max-w-[450px] p-5 sm:p-6 rounded-2xl backdrop-blur-3xl saturate-200 bg-white/90 dark:bg-[#050505]/90 border border-neutral-200/50 dark:border-neutral-800/50 shadow-2xl opacity-0 pointer-events-none translate-y-4 transition-all duration-500 font-code text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 flex flex-col sm:flex-row gap-3 sm:gap-6 overflow-hidden">
+                    
+                    <div class="flex-shrink-0 flex justify-center sm:justify-start">
+                        <pre class="text-emerald-600 dark:text-emerald-500 font-bold leading-tight select-none text-[10px] sm:text-xs pt-1">
+   o   o
+    \ /
+  .-----.
+ /       \
+|  o   o  |
+|  .---.  |
+ \_______/
+                        </pre>
+                    </div>
+
+                    <div class="flex-1 space-y-1.5 w-full">
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">root</span>@<span class="font-bold">haikal</span></p>
+                        <p class="text-neutral-400 dark:text-neutral-600">-------------------</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">OS</span>: AfterlifeOS (Android)</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">Host</span>: Poco F1 (beryllium)</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">Kernel</span>: 4.9-perf-custom</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">Uptime</span>: Semester 4 @ UNSAP</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">Packages</span>: AOSP, Astro, KNN</p>
+                        <p><span class="text-emerald-600 dark:text-emerald-500 font-bold">Shell</span>: zsh</p>
+                        
+                        <div class="flex gap-1.5 pt-2">
+                            <div class="w-3.5 h-3.5 bg-[#ff5555] rounded-sm shadow-sm"></div>
+                            <div class="w-3.5 h-3.5 bg-[#50fa7b] rounded-sm shadow-sm"></div>
+                            <div class="w-3.5 h-3.5 bg-[#f1fa8c] rounded-sm shadow-sm"></div>
+                            <div class="w-3.5 h-3.5 bg-[#8be9fd] rounded-sm shadow-sm"></div>
+                            <div class="w-3.5 h-3.5 bg-[#bd93f9] rounded-sm shadow-sm"></div>
+                            <div class="w-3.5 h-3.5 bg-[#ffb86c] rounded-sm shadow-sm"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <h1 class="text-5xl md:text-7xl font-extrabold text-black dark:text-white tracking-tight mb-4 leading-tight antialiased">
@@ -20,7 +57,6 @@ import Layout from '../layouts/Layout.astro';
 
             <h2 class="text-xl md:text-3xl text-neutral-600 dark:text-neutral-400 font-medium mb-6 antialiased">
                 Informatics Student & System Enthusiast.
-               
             </h2>
 
             <p class="text-base md:text-lg mb-10 leading-relaxed text-neutral-500 dark:text-neutral-500 antialiased">
@@ -28,11 +64,45 @@ import Layout from '../layouts/Layout.astro';
             </p>
 
             <div class="flex gap-4 items-center justify-start font-code text-sm pt-2">
-                
-                <a href="/experience" class="px-6 py-3 rounded-xl backdrop-blur-2xl saturate-150 border text-black dark:text-white font-bold text-sm bg-white/20 dark:bg-white/10 border-white/40 dark:border-white/10 shadow-[0_4px_16px_0_rgba(0,0,0,0.05)] dark:shadow-[0_4px_16px_0_rgba(255,255,255,0.02)] transition-all duration-300 ease-out hover:bg-white/30 dark:hover:bg-white/20 active:scale-[0.97] hover:-translate-y-0.5 active:bg-neutral-200 dark:active:bg-neutral-800 transition-colors">
+                <a href="/experience" class="px-6 py-3 rounded-xl backdrop-blur-2xl saturate-150 border text-black dark:text-white font-bold text-sm bg-white/20 dark:bg-white/10 border-white/40 dark:border-white/10 shadow-[0_4px_16px_0_rgba(0,0,0,0.05)] dark:shadow-[0_4px_16px_0_rgba(255,255,255,0.02)] transition-all duration-300 ease-out hover:bg-white/30 dark:hover:bg-white/20 active:scale-[0.97] hover:-translate-y-0.5 active:bg-neutral-200 dark:active:bg-neutral-800">
                     Lihat Project
                 </a>
             </div>
         </div>
     </main>
 </Layout>
+
+<script>
+    function initNeofetch() {
+        const badge = document.getElementById('terminal-badge');
+        const panel = document.getElementById('neofetch-panel');
+
+        if (!badge || !panel) return;
+
+        const newBadge = badge.cloneNode(true);
+        badge.parentNode.replaceChild(newBadge, badge);
+
+        newBadge.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            const isHidden = panel.classList.contains('opacity-0');
+            
+            if (isHidden) {
+                panel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                panel.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                panel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                panel.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!panel.contains(e.target) && !newBadge.contains(e.target)) {
+                panel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                panel.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+        });
+    }
+
+    initNeofetch();
+    document.addEventListener('astro:page-load', initNeofetch);
+</script>
